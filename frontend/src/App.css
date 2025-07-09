@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Responsive Margine */
+/* Main content margin */
+.responsive-margin {
+  transition: margin-left 0.3s ease;
+}
+
+/* On desktop: push content right */
+@media (min-width: 768px) {
+  .responsive-margin {
+    margin-left: 0px;
+  }
+}
+
+/* On mobile: no margin */
+@media (max-width: 767px) {
+  .responsive-margin {
+    margin-left: 250px;
+  }
+}
