@@ -14,12 +14,19 @@ const UpdateCredit = ({ show, onHide, user, formData, onChange, onSave }) => {
       <Modal.Body>
         <Form>
           <Form.Group className="mb-2">
-            <Form.Label>Credits</Form.Label>
-            <Form.Control
-              type="number"
-              name="credits"
+            <Form.Label>Operation</Form.Label>
+            <Form.Select
+              name="operation"
               onChange={onChange}
-            />
+            >
+              <option value="">Choose Option</option>
+              <option value="add">Add Creadits</option>
+              <option value="remove">Deduct Creadits</option>
+            </Form.Select>
+          </Form.Group>
+          <Form.Group className="mb-2">
+            <Form.Label>Credits</Form.Label>
+            <Form.Control type="number" name="credits" onChange={onChange} />
           </Form.Group>
         </Form>
       </Modal.Body>

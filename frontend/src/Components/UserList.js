@@ -18,6 +18,7 @@ const UserList = () => {
     mobile: "",
     password: "",
     credits: "",
+    operation:"",
   });
 
   useEffect(() => {
@@ -69,6 +70,7 @@ const UserList = () => {
     setEditingUser(user);
     setFormData({
       credits: user.credits,
+      operation:user.operation
     });
     setShowCreditModel(true);
   };
@@ -78,7 +80,7 @@ const UserList = () => {
       console.log("User is : ", editingUser._id, formData);
 
       await api.put(`/api/user/update/credits/${editingUser._id}`, formData);
-      alert("Creadits Added successfully!");
+      alert("Creadits Updated successfully!");
       setShowModal(false);
       setEditingUser(null);
       fetchUsers();

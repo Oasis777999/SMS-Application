@@ -82,7 +82,7 @@ router.get("/list", async (req, res) => {
 router.put("/update/credits/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { credits } = req.body;
+    const { credits, operation } = req.body;
 
     // Add credits to the existing value
     const user = await User.findById(id);
@@ -95,7 +95,16 @@ router.put("/update/credits/:id", async (req, res) => {
     const existingCredits = parseInt(user.credits) || 0;
     const newCredits = parseInt(credits) || 0;
 
-    user.credits = existingCredits + newCredits;
+    if (operation === "add") {
+      user.credits = existingCredits + newCredits;
+    }
+    else if(operation==="remove"){
+      user.credits = existingCredits - newCredits;
+    }
+    else{
+      res.status(500).json({ success: false, message:"Please select the operation" });
+    }
+
     const updatedUser = await user.save();
 
     res.status(200).json({ success: true, data: updatedUser });
@@ -104,6 +113,7 @@ router.put("/update/credits/:id", async (req, res) => {
   }
 });
 
+// Update the password
 router.put("/update/password/:id", async (req, res) => {
   try {
     const { id } = req.params;
