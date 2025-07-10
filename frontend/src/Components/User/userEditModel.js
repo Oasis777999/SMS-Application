@@ -39,24 +39,6 @@ const UserEditModal = ({ show, onHide, user, formData, onChange, onSave }) => {
               onChange={onChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
-            <Form.Label>Credits</Form.Label>
-            <Form.Control
-              type="number"
-              name="credits"
-              value={formData.credits}
-              onChange={onChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-2">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="text"
-              name="password"
-              value={formData.password}
-              onChange={onChange}
-            />
-          </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
